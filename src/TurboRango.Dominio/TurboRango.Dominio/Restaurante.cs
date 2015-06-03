@@ -1,16 +1,26 @@
-﻿
-namespace TurboRango.Dominio
+﻿namespace TurboRango.Dominio
 {
-    internal class Restaurante
+    public class Restaurante
     {
-        internal string Nome { get; set; }
+        /// <summary>
+        /// Capacidade (lotação máxima) do restaurante.
+        /// </summary>
+        public int? Capacidade { get; set; }
+        public string Nome { get; set; }
+        public Contato Contato { get; set; }
+        public Localizacao Localizacao { get; set; }
+        public Categoria Categoria { get; set; }
 
-        internal int Capacidade { get; set; }
-
-        internal Categoria Categoria { get; set; }
-
-        internal Localizacao Localizacao { get; set; }
-
-        internal Contato Contato { get; set; }
+        /*
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        internal string Imprimir(int x)
+        {
+            return null;
+        }
+        */
     }
 }
