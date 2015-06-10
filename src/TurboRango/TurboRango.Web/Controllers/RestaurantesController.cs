@@ -11,9 +11,7 @@ using TurboRango.Web.Models;
 
 namespace TurboRango.Web.Controllers
 {
-
     [Authorize]
-
     public class RestaurantesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -21,10 +19,9 @@ namespace TurboRango.Web.Controllers
         // GET: Restaurantes
         public ActionResult Index()
         {
-
             var restaurantes = db.Restaurantes
-                .Include(x => x.Localizacao)
-                .Include(x => x.Contato);
+                .Include(x => x.Contato)
+                .Include(x => x.Localizacao);
             return View(restaurantes.ToList());
         }
 
@@ -54,7 +51,7 @@ namespace TurboRango.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Capacidade,Nome,Localizacao,Contato,Categoria")] Restaurante restaurante)
+        public ActionResult Create([Bind(Include = "Id,Capacidade,Nome,Categoria")] Restaurante restaurante)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +83,7 @@ namespace TurboRango.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Capacidade,Nome,Localizacao,Categoria")] Restaurante restaurante)
+        public ActionResult Edit([Bind(Include = "Id,Capacidade,Nome,Categoria")] Restaurante restaurante)
         {
             if (ModelState.IsValid)
             {
@@ -122,6 +119,22 @@ namespace TurboRango.Web.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [AllowAnonymous]
+        public JsonResult Restaurantes()
+        {
+            var todos = db.Restaurantes
+                .Include(_ => _.Localizacao)
+                .ToList();
+
+            return Json(new
+            {
+                restaurantes = todos,
+                camigoal = DateTime.Now
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
