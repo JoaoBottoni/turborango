@@ -127,10 +127,15 @@ namespace TurboRango.Web.Controllers
                 .Include(_ => _.Localizacao)
                 .ToList();
 
+<<<<<<< HEAD
             return Json(new
             {
                 restaurantes = todos,
                 camigoal = DateTime.Now
+=======
+            return Json(new {
+                restaurantes = todos, camigoal = DateTime.Now
+>>>>>>> 0b481df7182e4b72677a39424e98ec523aad32e1
             }, JsonRequestBehavior.AllowGet);
         }
 
