@@ -25,12 +25,6 @@
                     { 
                     <li>@Html.ActionLink("Restaurantes", "Index", "Restaurantes")</li>
                     }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        @Html.Raw("Batman")
-                        //var ok = "Batman"
-                        <li>@Html.ActionLink("Restaurantes", "Index", "Restaurantes")</li>
-                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
