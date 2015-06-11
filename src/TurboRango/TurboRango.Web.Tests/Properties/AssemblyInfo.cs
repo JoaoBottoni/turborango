@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TurboRango.Web")]
+[assembly: AssemblyTitle("TurboRango.Web.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TurboRango.Web")]
+[assembly: AssemblyProduct("TurboRango.Web.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("33ea341d-075f-42c5-8f3b-33c6d63ef36c")]
+[assembly: Guid("ba45916f-7af6-4f93-a50d-8010cbfdf19f")]
 
 // Version information for an assembly consists of the following four values:
 //

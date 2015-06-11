@@ -1,4 +1,5 @@
-﻿namespace TurboRango.Dominio
+﻿
+namespace TurboRango.Dominio
 {
     public abstract class Entidade
     {

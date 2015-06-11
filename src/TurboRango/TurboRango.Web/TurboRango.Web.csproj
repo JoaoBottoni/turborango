@@ -7,19 +7,21 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DAE60DA0-18C0-4539-838B-A5A02A7934F3}</ProjectGuid>
+    <ProjectGuid>{7438CDD4-1D15-46DC-948A-77503DB3DD38}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TurboRango.Web</RootNamespace>
     <AssemblyName>TurboRango.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="jQuery.Validation.Unobtrusive.Native, Version=1.1.5485.28973, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jQuery.Validation.Unobtrusive.Native.MVC5.1.1.2\lib\net45\jQuery.Validation.Unobtrusive.Native.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -106,6 +112,15 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -166,13 +181,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506081929115_InitialCreate.cs" />
-    <Compile Include="Migrations\201506081929115_InitialCreate.Designer.cs">
-      <DependentUpon>201506081929115_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201506081923469_InitialCreate.cs" />
+    <Compile Include="Migrations\201506081923469_InitialCreate.Designer.cs">
+      <DependentUpon>201506081923469_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506082002166_CriarEntidades.cs" />
-    <Compile Include="Migrations\201506082002166_CriarEntidades.Designer.cs">
-      <DependentUpon>201506082002166_CriarEntidades.cs</DependentUpon>
+    <Compile Include="Migrations\201506081947023_CriarEntidades.cs" />
+    <Compile Include="Migrations\201506081947023_CriarEntidades.Designer.cs">
+      <DependentUpon>201506081947023_CriarEntidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -191,14 +206,15 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\haversine.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.pt-BR.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\haversine.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -244,10 +260,10 @@
     <Content Include="Views\Restaurantes\Edit.cshtml" />
     <Content Include="Views\Restaurantes\Index.cshtml" />
     <Content Include="Views\Sorteios\Index.cshtml" />
-    <Content Include="Views\Shared\Editor Tamplates\Contato.cshtml" />
-    <Content Include="Views\Shared\Editor Tamplates\Localizacao.cshtml" />
-    <Content Include="Views\Shared\Display Templates\Contato.cshtml" />
-    <Content Include="Views\Shared\Display Templates\Localizacao.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Contato.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Localizacao.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Contato.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Localizacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,11 +282,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506081929115_InitialCreate.resx">
-      <DependentUpon>201506081929115_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506081923469_InitialCreate.resx">
+      <DependentUpon>201506081923469_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506082002166_CriarEntidades.resx">
-      <DependentUpon>201506082002166_CriarEntidades.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506081947023_CriarEntidades.resx">
+      <DependentUpon>201506081947023_CriarEntidades.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -289,9 +305,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49703</DevelopmentServerPort>
+          <DevelopmentServerPort>18137</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49703/</IISUrl>
+          <IISUrl>http://localhost:26105/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -301,6 +317,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

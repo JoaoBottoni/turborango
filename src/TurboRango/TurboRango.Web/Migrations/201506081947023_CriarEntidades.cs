@@ -14,16 +14,15 @@ namespace TurboRango.Web.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Capacidade = c.Int(),
                         Nome = c.String(),
-                        Localizacao_Bairro = c.String(),
-                        Localizacao_Latitude = c.Double(nullable: false),
-                        Localizacao_Longitude = c.Double(nullable: false),
-                        Localizacao_Logradouro = c.String(),
                         Categoria = c.Int(nullable: false),
                         Contato_Id = c.Int(),
+                        Localizacao_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Contatoes", t => t.Contato_Id)
-                .Index(t => t.Contato_Id);
+                .ForeignKey("dbo.Localizacaos", t => t.Localizacao_Id)
+                .Index(t => t.Contato_Id)
+                .Index(t => t.Localizacao_Id);
             
             CreateTable(
                 "dbo.Contatoes",
@@ -35,12 +34,27 @@ namespace TurboRango.Web.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Localizacaos",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Bairro = c.String(),
+                        Latitude = c.Double(nullable: false),
+                        Longitude = c.Double(nullable: false),
+                        Logradouro = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Restaurantes", "Localizacao_Id", "dbo.Localizacaos");
             DropForeignKey("dbo.Restaurantes", "Contato_Id", "dbo.Contatoes");
+            DropIndex("dbo.Restaurantes", new[] { "Localizacao_Id" });
             DropIndex("dbo.Restaurantes", new[] { "Contato_Id" });
+            DropTable("dbo.Localizacaos");
             DropTable("dbo.Contatoes");
             DropTable("dbo.Restaurantes");
         }
