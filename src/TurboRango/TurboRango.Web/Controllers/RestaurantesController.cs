@@ -140,6 +140,14 @@ namespace TurboRango.Web.Controllers
                 .Include(x => x.Contato)
                 .FirstOrDefault(x => x.Id == id);
         }
+        
+        private Restaurante PorCategoria(Categoria Cat)
+        {
+            return db.Restaurantes
+                .Include(x => x.Localizacao)
+                .Include(x => x.Contato)
+                .FirstOrDefault(x => x.Categoria == Cat);
+        }
 
         protected override void Dispose(bool disposing)
         {

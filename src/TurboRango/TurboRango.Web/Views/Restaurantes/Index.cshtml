@@ -24,22 +24,10 @@
             @Html.DisplayNameFor(model => model.Capacidade)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Contato.Site)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Contato.Telefone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Localizacao.Logradouro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Localizacao.Bairro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Localizacao.Latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Localizacao.Longitude)
+            @Html.DisplayNameFor(model => model.Contato.Site)
         </th>
         <th></th>
     </tr>
@@ -59,22 +47,11 @@
             @Html.DisplayFor(modelItem => item.Capacidade)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Contato.Telefone) 
+
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Contato.Site)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contato.Telefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Localizacao.Logradouro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Localizacao.Bairro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Localizacao.Latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Localizacao.Longitude)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
